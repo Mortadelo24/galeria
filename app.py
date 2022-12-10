@@ -1,4 +1,6 @@
 import os
+from flask_cors import CORS
+
 
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
@@ -13,6 +15,7 @@ from datetime import datetime
 
 
 app = Flask(__name__)
+CORS(app)
 
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
