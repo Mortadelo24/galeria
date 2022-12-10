@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block main %}
+
+
+{% for p2 in p %}
+<div class="padding abs-center">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body little-profile text-center">
+        <div class="pro-img profile-userpic"><img class="img-responsive" src='{{ p2["profile"] }}' alt="user"></div>
+        <h3 class="m-b-0">{{ p2["username"] }}</h3>
+        <p>User</p>
+        <div class=" mb-4 d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4"></div>
+
+        <div class="container-fluid">
+          <div class="row">
+            {% for public in galeria %}
+
+
+            <div class="col-lg-4 mb-4">
+              <div class="bg-white rounded shadow-sm img-fluid card">
+                <a href='/image?public={{ public["id"] }}'><img src='{{ public["ruta"] }}' alt=""
+                    class="img-fluid card-img-top"></a>
+                <div class="p-4">
+                  <h5> <a href='/image?public={{ public["id"] }}' class="text-dark">{{ public["title"] }}</a></h5>
+                  <p class="small text-muted mb-0">{{ public["description"] }}</p>
+                  <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i>
+                    <div class="row align-items-center">
+
+
+                      <div class="col">
+                        <img class="btn-md perfil2" src='/static/on.png'
+                            alt=""><span class="badge text-bg-light rounded-pill align-text-bottom">{{
+                            public['likes']}}</span>
+                      </div>
+                    </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            {% endfor %}
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endfor %}
+
+
+
+
+{% endblock %}

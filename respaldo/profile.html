@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+{% for item in p %}
+
+
+<div class="container mt-5 d-flex justify-content-center">
+
+    <div class="card p-3">
+
+        <div class="d-flex align-items-center">
+
+            <div class="image">
+                <img src='{{ item["profile"] }}' class="rounded float-start " alt="Imagen">
+
+            </div>
+
+            <div class="ml-3 w-100">
+
+                <h4 class="mb-0 mt-0">{{ item["username"] }}</h4>
+                <span>User</span>
+
+                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+
+
+
+
+
+
+
+            </div>
+            <a class="nav-link" href="/logout">Cerrar sesion</a>
+
+
+        </div>
+        <div class="row text-center m-t-20">
+            <div class="col-lg-4 col-md-4 m-t-20">
+                <h3 class="m-b-0 font-light">10434</h3><small>Articles</small>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+                <h3 class="m-b-0 font-light">434K</h3><small>Followers</small>
+            </div>
+            <div class="col-lg-4 col-md-4 m-t-20">
+                <h3 class="m-b-0 font-light">5454</h3><small>Following</small>
+            </div>
+        </div>
+
+    </div>
+
+{% endfor %}
+
+
+{% endblock %}

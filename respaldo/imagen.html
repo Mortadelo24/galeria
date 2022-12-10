@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+{% for public in imagen %}
+<div class="row mx-1">
+  <div class="col-md-12 mb-4">
+    <div class="card card-cascade wider reverse">
+      <div class="view view-cascade overlay">
+        <img class="card-img-top" src='{{ public["ruta"] }}' alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight waves-effect waves-light"></div>
+        </a>
+      </div>
+      <div class="card-body card-body-cascade text-center">
+        <h4 class="card-title"><strong>{{ public["title"] }}</strong></h4>
+        <p class="card-text">
+          {{ public["description"] }}
+        </p>
+        <a href='profile?perfil={{ public["user_id"] }}'><img class="btn-md perfil" src='{{ public["profile"] }}'
+            alt=""></a>
+        <h6 class="card-title"><strong>{{ public["username"] }}</strong></h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+
+
+
+
+<div class="list-group w-auto">
+  <div class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <img src='{{ usuario[0]["profile"] }}' alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0"
+      _mstalt="49348">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+      <form action="/comentar?public={{ publicacion }}" method="post">
+        <input class="form-control me-2 busca" type="search" placeholder="Comenta"  name="comentario">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+
+      <form action="/comentar?public={{ publicacion }}" method="post">
+        <div class="form-group">
+          <textarea class="form-control " id="comentario" name="comentario" placeholder="Comenta" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <form action="/comentar?public={{ publicacion }}" method="post">
+        <div class="form-group">
+          <textarea class="form-control " id="comentario" name="comentario" placeholder="Comenta" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+  </div>
+  {% for comentario in comentarios %}
+  <div class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <img src='{{ comentario["profile"] }}' alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0"
+      _mstalt="49348">
+    <div class="d-flex gap-2 w-100 justify-content-between">
+      <div>
+        <h6 class="mb-0 text-start" _msthash="811967" _msttexthash="1160887">{{ comentario["username"] }}</h6>
+        <p class="mb-0 opacity-75" _msthash="774228" _msttexthash="2000661">{{ comentario["comentario"] }}</p>
+      </div>
+      <small class="opacity-50 text-nowrap" _msthash="700713" _msttexthash="58409">{{ comentario["date"] }}</small>
+    </div>
+  </div>
+
+  {% endfor %}
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

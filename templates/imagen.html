@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Imagen
+{% endblock %}
+
+{% block main %}
+{% for public in imagen %}
+<div class="row mx-1 imagen">
+  <div class="col-md-12 mb-4">
+    <div class="card card-cascade wider reverse">
+      <div class="view view-cascade overlay">
+        <img class="card-img-top" src='{{ public["ruta"] }}' alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight waves-effect waves-light"></div>
+        </a>
+      </div>
+      <div class="card-body card-body-cascade text-center">
+        <h4 class="card-title"><strong>{{ public["title"] }}</strong></h4>
+        <p class="card-text">
+          {{ public["description"] }}
+        </p>
+        <a href='profile?perfil={{ public["user_id"] }}'><img class="btn-md perfil" src='{{ public["profile"] }}'
+            alt=""></a>
+        <h6 class="card-title"><strong>{{ public["username"] }}</strong></h6>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row mx-1 imagen">
+  <div class="col-md-12 mb-4">
+    <div class=" list-group w-auto imagen">
+      <div class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <img src='{{ usuario[0]["profile"] }}' alt="imagen" width="32" height="32" class="rounded-circle flex-shrink-0">
+        <div class="d-flex gap-2 w-100 justify-content-between">
+
+          <form action="/comentar?public={{ publicacion }}" method="post">
+            <input class="form-control me-2 comentarioimput" type="text" placeholder="Comenta algo interesante" aria-label="Search"
+              name="comentario">
+          </form>
+        </div>
+      </div>
+      {% for comentario in comentarios %}
+      <div class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+
+        <a href='profile?perfil={{ comentario["usuario"] }}'><img src='{{ comentario["profile"] }}' alt="twbs" width="32"
+            height="32" class="rounded-circle flex-shrink-0"></a>
+        <div class="d-flex gap-2 w-100 justify-content-between">
+          <div>
+            <h6 class="mb-0 text-start">{{ comentario["username"] }}</h6>
+            <p class=" text-start mb-0 opacity-75">{{ comentario["comentario"] }}</p>
+          </div>
+          <div>
+            <small class="opacity-50 text-nowrap">{{ comentario["date"] }}</small>
+            {% if session["user_id"] == comentario["usuario"] %}
+            <a href='/deletecomentario?comentario={{ comentario["id"] }}&public={{ publicacion }}'>
+              <p class=" text-end mb-0 opacity-75">Eliminar</p>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+
+{% endfor %}
+
+
+{% endblock %}

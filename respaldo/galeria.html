@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Galeria
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+  <div class="px-lg-5">
+
+
+
+    <div class="row">
+      {% if galeria or galeria_p %}
+
+      {% else %}
+      <h1>Galeria personal vacia ☂️</h1>
+
+
+
+      {% endif %}
+      <h2>Publicaciones</h2>
+
+      {% for public in galeria %}
+
+      <div class="col-sm-6 col-md-4 ">
+        <div class="bg-white rounded shadow-sm img-fluid card"><img src='{{ public["ruta"] }}' alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href='/image?public={{ public["id"] }}' class="text-dark">{{ public["title"] }}</a></h5>
+            <p class="small text-muted mb-0">{{ public["description"] }}</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      <h2>Privado</h2>
+
+      {% for private in galeria_p %}
+
+      <div class="col-sm-6 col-md-4 ">
+        <div class="bg-white rounded shadow-sm img-fluid card"><img src='{{ private["ruta"] }}' alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5>{{ private["title"] }}</h5>
+            <p class="small text-muted mb-0">{{ private["description"] }}</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+
+
+
+
+</div>
+
+{% endblock %}

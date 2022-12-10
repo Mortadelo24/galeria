@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Save
+{% endblock %}
+
+{% block main %}
+<form action="/save" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="title" name="title" placeholder="Ingrese titulo" type="text">
+    </div>
+    <div class="mb-3">
+        <input   accept="image/png .jpeg .jpg" autofocus class="form-control mx-auto w-auto" id="file" name="file" placeholder="Ingrese imagen" type="file">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="exampleFormControlTextarea1">Descripcion</label>
+        <textarea class="form-control mx-auto w-auto" id="description" name="description" placeholder="Descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <select name="etiqueta">
+
+                <option  value="void">1</option>
+                <option  value="void2">2</option>
+
+        </select>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Publicar</button>
+</form>
+
+
+{% endblock %}

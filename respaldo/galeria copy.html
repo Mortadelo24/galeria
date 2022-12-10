@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Galeria
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid">
+
+  <div class="px-lg-5">
+
+
+
+    <div class="row">
+      {% if galeria_f %}
+      <div class="row py-5">
+        <div class="col-lg-12 mx-auto">
+          <div class="text-white p-5 shadow-sm rounded banner">
+            <h1 class="display-4">Favoritos✨</h1>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      {% for public in galeria_f %}
+
+
+      <div class="col-lg-4 mb-4">
+        <div class="bg-white rounded shadow-sm img-fluid card">
+          <a href='/image?public={{ public["id"] }}'><img src='{{ public["ruta"] }}' alt="" class="img-fluid card-img-top"></a>
+          <div class="p-4">
+            <h5> <a href='/image?public={{ public["id"] }}' class="text-dark">{{ public["title"] }}</a></h5>
+            <p class="small text-muted mb-0">{{ public["description"] }}</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i>
+                <div class="row align-items-center">
+                  <div class="col">
+                    <a href='profile?perfil={{ public["user_id"] }}'><img class="btn-md perfil" src='{{ public["profile"] }}' alt="" ></a>
+                  </div>
+                  <div class="col"><h6 class="font-weight-bold align-items-end">{{ public["username"] }}</h6></div>
+                  <div class="col">
+                    <a href='unlike?public={{ public["id"] }}' ><img class="btn-md perfil2"
+                      src='/static/on.png' alt=""><span class="badge text-bg-light rounded-pill align-text-bottom">{{ public['likes']}}</span></a>
+
+
+                  </div>
+
+
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {% endfor %}
+      {% endif %}
+
+      
+      {% if galeria or galeria_p %}
+      <h1 class="display-4 fw-bold">Publicaciones</h1>
+
+        {% for public in galeria %}
+
+        <div class="col-sm-6 col-md-4 ">
+          <div class="bg-white rounded shadow-sm img-fluid card"><img src='{{ public["ruta"] }}' alt="" class="img-fluid card-img-top">
+            <div class="p-4">
+              <h5> <a href='/image?public={{ public["id"] }}' class="text-dark">{{ public["title"] }}</a></h5>
+              <p class="small text-muted mb-0">{{ public["description"] }}</p>
+              <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i>
+
+
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <a href='delete?public={{ public["id"] }}'><img class="btn-md perfil" src='/static/bas.png' alt="" ></a>
+                    </div>
+
+
+
+
+                  </div>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+        {% if galeria_p %}
+
+        <h1 class="display-4 fw-bold">Privado</h1>
+
+        {% endif %}
+
+
+
+        {% for private in galeria_p %}
+
+        <div class="col-sm-6 col-md-4 ">
+          <div class="bg-white rounded shadow-sm img-fluid card"><img src='{{ private["ruta"] }}' alt="" class="img-fluid card-img-top">
+            <div class="p-4">
+              <h5>{{ private["title"] }}</h5>
+              <p class="small text-muted mb-0">{{ private["description"] }}</p>
+              <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+
+      {% else %}
+        <h1>Galeria personal vacia ☂️</h1>
+
+
+
+      {% endif %}
+
+
+
+
+
+
+</div>
+
+{% endblock %}

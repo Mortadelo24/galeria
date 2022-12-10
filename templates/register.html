@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img   class="relleno img-fluid" src="/static/port2.png" alt="login form" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form action="/register" method="post">
+
+
+                                    <div class="fw-normal mb-3 pb-3">
+                                        <img src="/static/layout.ico" alt="login form" width="50" height="50">
+                                        <span class="h3 fw-bold mb-0">Regístrate</span>
+                                    </div>
+
+
+
+
+                                   
+
+                                    <div class="col-md form-outline mb-4">
+                                        <div class="form-floating">
+                                          <input type="text" id="username" name="username" class="form-control" id="floatingInputGrid" placeholder="Apodo" >
+                                          <label for="floatingInputGrid">Apodo</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md form-outline mb-4">
+                                        <div class="form-floating">
+                                          <input type="password" id="password" name="password" class="form-control" id="floatingInputGrid" placeholder="name@example.com" >
+                                          <label for="floatingInputGrid">Contraseña</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md form-outline mb-4">
+                                        <div class="form-floating">
+                                          <input type="password" id="confirmation" name="confirmation" class="form-control" id="floatingInputGrid" placeholder="name@example.com" >
+                                          <label for="floatingInputGrid">Contraseña</label>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <div class="col-md form-outline mb-4">
+                                        <div class="form-floating">
+                                          <input type="email" id="correo" name="correo" class="form-control" id="floatingInputGrid" placeholder="name@example.com" >
+                                          <label for="floatingInputGrid">Correo elctronico</label>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <div class="pt-1 mb-4">
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Register</button>
+                                    </div>
+
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">ya tienes una cuenta? <a href="/login"
+                                            style="color: #393f81;">Iniciar sesion</a></p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+{% for item in p %}
+
+
+<div class="padding abs-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body little-profile text-center">
+                <div class="pro-img profile-userpic"><img class="img-responsive" src='{{ item["profile"] }}' alt="user"></div>
+
+                <h3 class="m-b-0">{{ item["username"] }}</h3>
+
+                <button type="button" class="btn btn-danger"><a class="nav-link" href="/logout">cerrar sesión</a></button>
+                <div class=" mb-4 d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4"></div>
+                <form action="/profile_update" method="post" enctype="multipart/form-data">
+                  <h3>Cambiar imagen de perfil</h3>
+
+                    <div class="mb-3">
+                        <input   accept="image/png .jpeg .jpg" autofocus class="form-control mx-auto w-auto" id="file" name="file" placeholder="Ingrese imagen" type="file">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Subir</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endfor %}
+
+
+
+{% endblock %}

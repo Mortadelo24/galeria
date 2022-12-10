@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Save
+{% endblock %}
+
+{% block main %}
+<div class="padding abs-center ">
+    <form action="/save" method="post" enctype="multipart/form-data">
+        <div class="mb-3 ">
+            <h2 for="exampleFormControlTextarea1">Título</h2>
+            <input autocomplete="off" autofocus class="  form-control " id="title" name="title" placeholder="Ingrese titulo" type="text">
+        </div>
+
+
+        <div class="form-group mb-3">
+
+            <h3 for="exampleFormControlTextarea1">Descripción</h3>
+            <textarea class="form-control " id="description" name="description" placeholder="Descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="mb-3 ">
+            <input   accept="image/png .jpeg .jpg" autofocus class="form-control mx-auto w-auto"   id="files" name="file" placeholder="Ingrese imagen" type="file">
+            <output class="rounded save" id="list"></output>
+        </div>
+        <select class="form-select mb-3 " aria-label="Default select example" name="privacidad">
+            <option value="public" selected>Público</option>
+            <option value="private">Privado</option>
+
+        </select>
+        <button class="btn btn-primary " type="submit">Publicar</button>
+
+    </form>
+
+
+
+</div>
+<div class="text-center">
+
+</div>
+
+
+
+<script>
+    function archivo(evt) {
+        var files = evt.target.files; // FileList object
+
+        // Obtenemos la imagen del campo "file".
+        for (var i = 0, f; f = files[i]; i++) {
+            //Solo admitimos imágenes.
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+
+            var reader = new FileReader();
+
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    // Insertamos la imagen
+                    document.getElementById("list").innerHTML = ['<img class="thumb save" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+                };
+            })(f);
+
+            reader.readAsDataURL(f);
+        }
+    }
+
+    document.getElementById('files').addEventListener('change', archivo, false);
+</script>
+
+{% endblock %}

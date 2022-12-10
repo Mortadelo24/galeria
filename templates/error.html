@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block main %}
+<img src='{{ img }}' class="rounded mx-auto d-block" alt="Error">
+<h1>Error code {{ top }}</h1>
+<h2>{{ bottom  }}</h2>
+
+{% endblock %}

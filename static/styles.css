@@ -1,0 +1,116 @@
+body {
+    background: #f4f4f4;
+}
+
+.banner {
+    background: -webkit-linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(203, 217, 64, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    background: rgb(34, 193, 195);
+    background: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+
+}
+
+
+
+.close {
+    font-size: 1.5rem;
+}
+
+.col-12 img {
+    opacity: 0.7;
+    cursor: pointer;
+    margin: 2rem;
+    width: 100%;
+}
+
+.col-12 img:hover {
+    opacity: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.perfil {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+}
+
+.perfil2 {
+    height: 25px;
+    width: 25px;
+}
+
+.perfil3 {
+    border-radius: 50%;
+
+}
+
+.save {
+    max-width: 200px;
+    max-height: 60%;
+
+}
+
+.relleno {
+    min-height: 100%;
+    max-width: 100%;
+    border-radius: 1rem 0 0 1rem;
+}
+
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+}
+
+
+
+
+.busca {
+    position: relative;
+    width: 60vw;
+}
+
+.comentarioimput {
+    position: relative;
+    width: 88vw;
+}
+
+
+.imglimit {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.cardtextlimit {
+    height: 90px;
+}
+
+.descripcionlimit {
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.titulolimit {
+    max-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
